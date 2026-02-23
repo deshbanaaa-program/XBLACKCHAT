@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X BLACK - Anonymous Q&A</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 10% 20%, #2b2b2b, #0a0a0a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .glass-container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 32px 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            color: #eee;
+            transition: 0.3s;
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .subhead {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 14px 18px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #7f7f7f;
+        }
+
+        .checkbox-wrapper label {
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            width: 100%;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .security-note {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8f8f8f;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 50px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 28px;
+            color: #aaa;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .stats span {
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 16px;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .message-success {
+            background: #1e4a2b;
+            color: #b0ffb0;
+            padding: 10px;
+            border-radius: 50px;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <h1>X BLACK</h1>
+        <div class="subhead">anonymous q&a · private & secure</div>
+
+        <!-- Form identitas & pesan -->
+        <div class="input-group">
+            <label>Nama kamu</label>
+            <input type="text" id="nama" placeholder="cth: Andi">
+        </div>
+        <div class="input-group">
+            <label>Email (agar owner bisa membalas)</label>
+            <input type="email" id="email" placeholder="nama@gmail.com">
+        </div>
+        <div class="input-group">
+            <label>Pesan / Pertanyaan</label>
+            <textarea id="pesan" placeholder="Tulis sesuatu..."></textarea>
+        </div>
+
+        <!-- Checkbox robot -->
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="bukanRobot">
+            <label for="bukanRobot">Saya bukan robot</label>
+        </div>
+
+        <!-- Tombol kirim -->
+        <button class="btn" id="sendBtn">SEND</button>
+
+        <!-- Notifikasi -->
+        <div id="successMessage" class="message-success">✓ Pesan terkirim!</div>
+
+        <!-- Keamanan -->
+        <div class="security-note">
+            🔒 Website ini aman, tidak ada virus atau apapun
+        </div>
+
+        <!-- Statistik tiruan -->
+        <div class="stats">
+            <div>👥 <span>279</span> friends just tapped</div>
+            <div>💬 <span>Get your own messages!</span></div>
+        </div>
+
+        <!-- Footer dummy -->
+        <div class="footer-links">
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="owner.html" target="_blank">Owner Panel</a>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const sendBtn = document.getElementById('sendBtn');
+            const namaInput = document.getElementById('nama');
+            const emailInput = document.getElementById('email');
+            const pesanInput = document.getElementById('pesan');
+            const robotCheck = document.getElementById('bukanRobot');
+            const successMsg = document.getElementById('successMessage');
+
+            // Fungsi simpan pesan ke localStorage
+            function simpanPesan(nama, email, pesan) {
+                let messages = JSON.parse(localStorage.getItem('messages')) || [];
+                const newMsg = {
+                    id: Date.now(),
+                    nama: nama,
+                    email: email,
+                    pesan: pesan,
+                    timestamp: new Date().toLocaleString('id-ID')
+                };
+                messages.push(newMsg);
+                localStorage.setItem('messages', JSON.stringify(messages));
+            }
+
+            sendBtn.addEventListener('click', function() {
+                // Validasi
+                const nama = namaInput.value.trim();
+                const email = emailInput.value.trim();
+                const pesan = pesanInput.value.trim();
+                const isRobotChecked = robotCheck.checked;
+
+                if (!nama || !email || !pesan) {
+                    alert('Harap isi nama, email, dan pesan!');
+                    return;
+                }
+                if (!isRobotChecked) {
+                    alert('Harap centang "Saya bukan robot" untuk mengirim.');
+                    return;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('Masukkan email yang valid.');
+                    return;
+                }
+
+                // Simpan
+                simpanPesan(nama, email, pesan);
+
+                // Tampilkan sukses, reset form
+                successMsg.style.display = 'block';
+                namaInput.value = '';
+                emailInput.value = '';
+                pesanInput.value = '';
+                robotCheck.checked = false;
+
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+        })();
+    </script>
+</body>
+</html>
